@@ -31,6 +31,16 @@ const questions = inquirer.prompt([
         choices: ['Apache 2.0', 'MIT', 'GNU GPL v3.0'],
     },
     {
+        input: 'input',
+        name: 'usage',
+        message: 'How do you use the project?'
+    },
+    {
+        input: 'input',
+        name: 'install',
+        message: 'How do you install this project?'
+    },
+    {
         type: 'input',
         name: 'contributors',
         message: 'Who contributed to this project?'
@@ -42,24 +52,57 @@ const questions = inquirer.prompt([
     },
     {
         type: 'input',
-        name: 'gitHubURL',
-        message: 'what is your GitHub user name?',
+        name: 'githubURL',
+        message: 'What is your GitHub user name?',
     },
     {
         type: 'input',
         email: 'email',
         message: 'What is your email address?',
     },
-])
+]).then ((response) => {
+    console.log('Answers', response)
+    const readData =
+    `# ${response.project}
+    ## Description
+    ${response.description}
+    
+    ## Table of Contents
 
-// function to write README file
-function writeToFile(fileName, data) {
-}
+    * [Installation](#install)
+    * [Usage](#usage)
+    * [Contributors](#contributors)
+    * [License](#license)
+    * [Contact](#contact)
+    
+    ## Installation
+    ${response.install}
+    ## Usage
+    ${response.usage}
+    ## Contributors
+    ${response.contributors}
+    ## Tests
+    ${response.tests}
+    ## License
+    ${response.license}
+    ## Contact
+    Github Profile: [${response.githubURL}](${response.githubURL})
+    Email: [${response.email}](mailto:${response.email})
+    `;
+
+    fs.writeFile(`readME.md`, readData, function (err) {
+        if (err) throw err;
+        console.log("Success!")
+    })
+
+})
+
+
 
 // function to initialize program
-function init() {
+// function init() {
 
-}
+// }
 
 // function call to initialize program
-init();
+// init();
