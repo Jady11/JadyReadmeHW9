@@ -9,6 +9,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^6.3.1"
-  }
+    "fs": "0.0.1-security",
+    "inquirer": "^6.5.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jady11/JadyReadmeHW9.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Jady11/JadyReadmeHW9/issues"
+  },
+  "homepage": "https://github.com/Jady11/JadyReadmeHW9#readme"
 }
