@@ -11,11 +11,6 @@ const fs = require('fs');
 const questions = inquirer.prompt([
     {
         type: 'input',
-        name: 'name',
-        message: 'What is your name?',
-    },
-    {
-        type: 'input',
         name: 'project',
         message: 'What is your project name?',
     },
@@ -60,10 +55,11 @@ const questions = inquirer.prompt([
         email: 'email',
         message: 'What is your email address?',
     },
-]).then ((response) => {
-    console.log('Answers', response)
-    const readData =
-    `# ${response.project}
+])
+.then((answers) => {
+    console.log("Answers", response)
+    const readData = { project, description, license, usage, install, contributors, tests, githubURL, email};
+    let readME = `# ${response.title}
     ## Description
     ${response.description}
     
@@ -89,13 +85,20 @@ const questions = inquirer.prompt([
     Github Profile: [${response.githubURL}](${response.githubURL})
     Email: [${response.email}](mailto:${response.email})
     `;
+}), 
+((response) => {
+    console.log('Answers', response)
+    const readData =
+     
+    // `# ${response.project}`;
 
-    fs.writeFile(`readME.md`, readData, function (err) {
-        if (err) throw err;
-        console.log("Success!")
+fs.writeFile(`readME.md`, readData, (err) => {
+    if (err) throw err;
+    console.log("Success!")
     })
+});
 
-})
+
 
 
 
